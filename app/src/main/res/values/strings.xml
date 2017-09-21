@@ -9,5 +9,17 @@
     <string name="checkbox">CheckBox</string>
     <string name="radiobutton">RadioButton</string>
     <string name="switch_what">What does this do?</string>
-    <string name="cnt_desc_camera">Icône de caméra</string>
+    <string name="cnt_desc_camera">Camera Icon</string>
+    <string name="sign_in">Sign in !</string>
+
+    <!-- NEW CONTENT TODO - Add to French strings file -->
+
+    <string name="switch_on">Switch is on</string>
+    <string name="switch_off">Switch is off</string>
+    <string name="dialog_message">Do you want to finish the activity?</string>
+    <string name="dialog_title">Confirmation</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="response">Response</string>
+    <string name="here_response">Here is my response</string>
 </resources>

@@ -10,4 +10,5 @@
     <string name="radiobutton">BoutonRadio</string>
     <string name="switch_what">Qu\'est-ce que cela fait?</string>
     <string name="cnt_desc_camera">Image de caméra</string>
+    <string name="sign_in">se connecter !</string>
 </resources>
