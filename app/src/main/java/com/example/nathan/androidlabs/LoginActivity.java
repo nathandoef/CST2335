@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
@@ -20,7 +21,8 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         final SharedPreferences sharedPreferences = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
-        final TextView txtEmail = (TextView)findViewById(R.id.txtEmail);
+
+        final EditText txtEmail = (EditText) findViewById(R.id.txtEmail);
 
         String emailString = sharedPreferences.getString("DefaultEmail", DEFAULT_EMAIL);
         txtEmail.setText(emailString);
