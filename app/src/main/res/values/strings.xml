@@ -11,6 +11,7 @@
     <string name="switch_what">What does this do?</string>
     <string name="cnt_desc_camera">Camera Icon</string>
     <string name="sign_in">Sign in !</string>
+    <string name="button_forecast">Weather Forecast</string>
 
     <string name="switch_on">Switch is on</string>
     <string name="switch_off">Switch is off</string>
