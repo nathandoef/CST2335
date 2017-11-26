@@ -117,16 +117,18 @@ public class WeatherForecastActivity extends Activity {
                                 //file.delete();
 
                                 Log.i("MESSAGE", "Looking for file: " + fileName);
-                                FileInputStream fis = null;
-                                try {
+
+                                if (fileExists(fileName)){
+                                    FileInputStream fis = null;
                                     fis = openFileInput(iconName + ".png");
                                     weatherPic = BitmapFactory.decodeStream(fis);
                                     Log.i("MESSAGE", "Loaded image locally");
                                 }
-                                catch (FileNotFoundException fnfe){
+                                else {
                                     weatherPic = downloadBitmapFrom(fileName);
                                     Log.i("MESSAGE", "Downloaded image from server");
                                 }
+
                                 publishProgress(100);
                             }
                             break;
