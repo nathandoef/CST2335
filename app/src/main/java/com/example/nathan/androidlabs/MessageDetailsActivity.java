@@ -12,7 +12,7 @@ public class MessageDetailsActivity extends Activity {
 
     private Button btnDeleteMessage;
     private Bundle msgDetails;
-    private ChatWindow.MessageFragment loadedFragment;
+    private MessageFragment loadedFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,8 @@ public class MessageDetailsActivity extends Activity {
         if (extras != null){
 
             msgDetails = extras.getBundle("msgDetails");
-            ChatWindow.MessageFragment loadedFragment = new ChatWindow.MessageFragment();
+            MessageFragment loadedFragment = new MessageFragment();
             loadedFragment.setArguments(msgDetails);
-
             getFragmentManager().beginTransaction()
                     .add(R.id.flMsgDetailsPhone, loadedFragment).commit();
         }

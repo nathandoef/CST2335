@@ -24,4 +24,5 @@
 
     <string name="start_chat">Start Chat</string>
     <string name="send">Send</string>
+    <string name="title_activity_test_toolbar">TestToolbar</string>
 </resources>

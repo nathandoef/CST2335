@@ -52,4 +52,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnStartChat" />
 
+    <Button
+        android:id="@+id/btnToolbar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Test Toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnForecast"/>
+
 </android.support.constraint.ConstraintLayout>
