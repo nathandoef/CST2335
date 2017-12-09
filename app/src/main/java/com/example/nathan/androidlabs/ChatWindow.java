@@ -1,7 +1,6 @@
 package com.example.nathan.androidlabs;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -25,74 +24,6 @@ import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
 
-    public static class MessageFragment extends Fragment {
-
-        private Activity callingActivity;
-        private String msg;
-        private long id;
-        private int position;
-
-        public MessageFragment(){}
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-            View view = inflater.inflate(R.layout.message_details_fragment, container, false);
-
-            this.msg = getArguments().getString("msg");
-            this.id = getArguments().getLong("id");
-            this.position = getArguments().getInt("position");
-
-            TextView tvMsgDetails = (TextView) view.findViewById(R.id.tvMsgDetails);
-            TextView tvMsgId = (TextView)view.findViewById(R.id.tvMsgId);
-
-            tvMsgDetails.setText("Message: " + msg);
-            tvMsgId.setText("ID: " + Long.toString(id));
-
-            Button btnDeleteMessage = (Button)view.findViewById(R.id.btnDeleteMsg);
-
-            switch(callingActivity.getLocalClassName()){
-                case "ChatWindow":
-                    btnDeleteMessage.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ((ChatWindow)callingActivity).deleteMessage(id, position);
-
-                            callingActivity.getFragmentManager().beginTransaction().
-                                    remove(MessageFragment.this).commit();
-                        }
-                    });
-                    break;
-
-                case "MessageDetailsActivity":
-                    btnDeleteMessage.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ((MessageDetailsActivity) callingActivity).deleteMessage(id, position);
-                        }
-                    });
-                    break;
-            }
-            return view;
-        }
-
-        @Override
-        public void onAttach(Context context){
-            super.onAttach(context);
-        }
-
-        @Override
-        public void onAttach(Activity activity){
-            super.onAttach(activity);
-            this.callingActivity = activity;
-        }
-    }
-
-    private void deleteMessage(long id, int position){
-        chatMessageList.remove(position);
-        db.delete(ChatDatabaseHelper.CHAT_TABLE, ChatDatabaseHelper.KEY_ID + "=" + id, null);
-        messageAdapter.notifyDataSetChanged();
-    }
-
     private final String ACTIVITY_NAME = "ChatWindowActivity";
     private final int DELETE_REQUEST = 10;
     private boolean frameLayoutExists;
@@ -110,6 +41,8 @@ public class ChatWindow extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat_window);
 
         dbHelper = new ChatDatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
@@ -125,15 +58,8 @@ public class ChatWindow extends Activity {
             cursor.moveToNext();
         }
 
-        int count = cursor.getColumnCount();
-        Log.i(ACTIVITY_NAME, "Cursor's column count = " + count);
+        logColumnInfo();
 
-        for (int i = 0; i < count; i++){
-            Log.i(ACTIVITY_NAME, "Column " + i + ": " + cursor.getColumnName(i));
-        }
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_window);
         frameLayoutExists = findViewById(R.id.flMsgDetails) != null;
 
         chatWindow = (ListView)findViewById(R.id.chatWindow);
@@ -215,6 +141,21 @@ public class ChatWindow extends Activity {
     {
         super.onConfigurationChanged(newConfig);
         startActivity(new Intent(this, ChatWindow.class));
+    }
+
+    protected void deleteMessage(long id, int position){
+        chatMessageList.remove(position);
+        db.delete(ChatDatabaseHelper.CHAT_TABLE, ChatDatabaseHelper.KEY_ID + "=" + id, null);
+        messageAdapter.notifyDataSetChanged();
+    }
+
+    private void logColumnInfo(){
+        int count = cursor.getColumnCount();
+        Log.i(ACTIVITY_NAME, "Cursor's column count = " + count);
+
+        for (int i = 0; i < count; i++){
+            Log.i(ACTIVITY_NAME, "Column " + i + ": " + cursor.getColumnName(i));
+        }
     }
 
     private class ChatAdapter extends ArrayAdapter<String> {
