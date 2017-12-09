@@ -11,6 +11,7 @@
     <string name="switch_what">Qu\'est-ce que cela fait?</string>
     <string name="cnt_desc_camera">Image de caméra</string>
     <string name="sign_in">se connecter !</string>
+    <string name="button_forecast">Prévisions météorologiques</string>
 
     <string name="switch_on">l\'activation est activée</string>
     <string name="switch_off">l\'interrupteur est éteint</string>
