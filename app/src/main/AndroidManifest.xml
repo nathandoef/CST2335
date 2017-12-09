@@ -22,10 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".ListItemsActivity"></activity>
-        <activity android:name=".ChatWindow"></activity>
-        <activity android:name=".WeatherForecastActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ListItemsActivity" />
+        <activity android:name=".ChatWindow"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".WeatherForecastActivity" />
+        <activity android:name=".MessageDetailsActivity"></activity>
     </application>
 
 </manifest>
