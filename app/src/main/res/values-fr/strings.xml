@@ -11,4 +11,16 @@
     <string name="switch_what">Qu\'est-ce que cela fait?</string>
     <string name="cnt_desc_camera">Image de caméra</string>
     <string name="sign_in">se connecter !</string>
+
+    <string name="switch_on">l\'activation est activée</string>
+    <string name="switch_off">l\'interrupteur est éteint</string>
+    <string name="dialog_message">voulez-vous terminer l\'activité?</string>
+    <string name="dialog_title">Confirmation</string>
+    <string name="ok">D\'accord</string>
+    <string name="cancel">Annuler</string>
+    <string name="response">Réponse</string>
+    <string name="here_response">Voici ma réponse</string>
+
+    <string name="start_chat">Démarrer la discussion</string>
+    <string name="send">Envoyer</string>
 </resources>
